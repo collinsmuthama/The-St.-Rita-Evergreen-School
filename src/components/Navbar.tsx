@@ -50,9 +50,9 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <Link to="/" className={`font-display text-xl font-bold transition-colors ${textColor}`}>
-          Esther's School
-        </Link>
+        <a href="#" className={`font-display text-3xl font-bold transition-colors ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+          The St. Rita Evergreen School
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-1">
