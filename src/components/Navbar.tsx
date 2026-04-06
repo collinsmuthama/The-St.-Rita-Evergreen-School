@@ -1,37 +1,37 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "/" },
   {
     label: "About Us",
-    href: "#about",
+    href: "/about",
     children: [
-      { label: "Our Story", href: "#story" },
-      { label: "Mission", href: "#mission" },
-      { label: "Staff Team", href: "#staff" },
+      { label: "Our Story", href: "/about#story" },
+      { label: "Mission & Vision", href: "/about#mission" },
+      { label: "Staff Team", href: "/about#staff" },
     ],
   },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Admissions", href: "#admissions", badge: "Ongoing" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Admissions", href: "/admissions", badge: "Ongoing" },
   {
     label: "Get Involved",
-    href: "#involved",
+    href: "/donate",
     children: [
-      { label: "Scholarships", href: "#scholarships" },
-      { label: "Classrooms", href: "#classrooms" },
-      { label: "Lab", href: "#lab" },
-      { label: "Necessities", href: "#necessities" },
-      { label: "Utilities", href: "#utilities" },
+      { label: "Donate", href: "/donate" },
+      { label: "Scholarships", href: "/donate#scholarships" },
     ],
   },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -39,18 +39,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => { setMobileOpen(false); }, [location]);
+
+  const textColor = scrolled || !isHome ? "text-foreground" : "text-primary-foreground";
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-card shadow-lg backdrop-blur-sm"
-          : "bg-transparent"
+        scrolled || !isHome ? "bg-card shadow-lg backdrop-blur-sm" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <a href="#" className={`font-display text-xl font-bold transition-colors ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+        <Link to="/" className={`font-display text-xl font-bold transition-colors ${textColor}`}>
           Esther's School
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-1">
@@ -61,11 +63,9 @@ const Navbar = () => {
               onMouseEnter={() => item.children && setOpenDropdown(item.label)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <a
-                href={item.href}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1 hover:text-primary ${
-                  scrolled ? "text-foreground" : "text-primary-foreground"
-                }`}
+              <Link
+                to={item.href}
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1 hover:text-primary ${textColor}`}
               >
                 {item.label}
                 {item.badge && (
@@ -74,34 +74,34 @@ const Navbar = () => {
                   </span>
                 )}
                 {item.children && <ChevronDown className="w-3 h-3" />}
-              </a>
+              </Link>
               {item.children && openDropdown === item.label && (
                 <div className="absolute top-full left-0 bg-card rounded-lg shadow-xl border border-border py-2 min-w-[180px] animate-float-in">
                   {item.children.map((child) => (
-                    <a
+                    <Link
                       key={child.label}
-                      href={child.href}
+                      to={child.href}
                       className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors"
                     >
                       {child.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
           ))}
-          <a
-            href="#donate"
+          <Link
+            to="/donate"
             className="ml-4 px-5 py-2.5 bg-accent text-accent-foreground font-semibold rounded-lg animate-pulse-red hover:opacity-90 transition-opacity text-sm"
           >
             Donate Now
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden p-2 ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+          className={`lg:hidden p-2 ${textColor}`}
         >
           {mobileOpen ? <X /> : <Menu />}
         </button>
@@ -113,10 +113,9 @@ const Navbar = () => {
           <div className="container mx-auto py-4 px-4 flex flex-col gap-2">
             {navItems.map((item) => (
               <div key={item.label}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className="block px-3 py-2 text-foreground hover:text-primary font-medium text-sm"
-                  onClick={() => !item.children && setMobileOpen(false)}
                 >
                   {item.label}
                   {item.badge && (
@@ -124,29 +123,28 @@ const Navbar = () => {
                       {item.badge}
                     </span>
                   )}
-                </a>
+                </Link>
                 {item.children && (
                   <div className="pl-6 flex flex-col gap-1">
                     {item.children.map((child) => (
-                      <a
+                      <Link
                         key={child.label}
-                        href={child.href}
+                        to={child.href}
                         className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary"
-                        onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
               </div>
             ))}
-            <a
-              href="#donate"
+            <Link
+              to="/donate"
               className="mt-2 text-center px-5 py-2.5 bg-accent text-accent-foreground font-semibold rounded-lg text-sm"
             >
               Donate Now
-            </a>
+            </Link>
           </div>
         </div>
       )}
