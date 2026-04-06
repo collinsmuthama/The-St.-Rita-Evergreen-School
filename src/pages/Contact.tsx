@@ -30,7 +30,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Location</p>
-                <p className="text-muted-foreground text-sm">Esther's School, Narok County, Kenya</p>
+                <p className="text-muted-foreground text-sm">Esther's School, Nyahururu, Kenya — 13 km from Nyahururu town along the Nyahururu–Nyeri road</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
