@@ -30,7 +30,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Location</p>
-                <p className="text-muted-foreground text-sm">Esther's School, Narok County, Kenya</p>
+                <p className="text-muted-foreground text-sm">Esther's School, Nyahururu, Kenya — 13 km from Nyahururu town along the Nyahururu–Nyeri road</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
@@ -55,7 +55,7 @@ const Contact = () => {
             {/* Map */}
             <div className="rounded-xl overflow-hidden border border-border shadow-sm">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853731544!2d35.8!3d-1.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182cd4f0b3aae0e7%3A0x84e6b72c32e5bb92!2sNarok!5e0!3m2!1sen!2ske!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63791.5!2d36.35!3d-0.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17881552be029e1d%3A0x72f2e51b72c1c4e8!2sNyahururu!5e0!3m2!1sen!2ske!4v1"
                 width="100%"
                 height="250"
                 style={{ border: 0 }}
