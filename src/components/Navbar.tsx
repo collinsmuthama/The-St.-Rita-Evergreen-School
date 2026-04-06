@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -50,7 +51,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <a href="#" className={`font-display text-3xl font-bold transition-colors ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+        <a href="#" className={`font-display text-3xl font-bold transition-colors ${scrolled ? "text-foreground" : "text-primary"}`}>
           The St. Rita Evergreen School
         </a>
 

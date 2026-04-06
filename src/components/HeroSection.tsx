@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import heroImage from "@/assets/hero-classroom.jpg";
+import heroImage from "@/assets/hero.png";
+import heroImage1 from "@/assets/hero1.png";
+import heroImage2 from "@/assets/hero3.png"
 
 const slides = [
   {
@@ -9,14 +11,14 @@ const slides = [
     subtitle: "Supporting teen mothers and survivors of GBV/FGM to complete their journey — with dignity, care, and hope.",
   },
   {
-    image: heroImage,
+    image: heroImage1,
     title: "Every Girl Deserves a Second Chance.",
     subtitle: "We provide a safe space for learning, healing, and growing — because no dream should be abandoned.",
   },
   {
-    image: heroImage,
+    image: heroImage2,
     title: "Building Futures, One Student at a Time.",
-    subtitle: "From trauma counseling to vocational training, we equip our students with the tools to thrive.",
+    subtitle: "Bright minds, bold dreams, and a future full of possibilities"
   },
 ];
 
