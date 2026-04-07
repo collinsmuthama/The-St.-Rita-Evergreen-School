@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import heroImage from "@/assets/hero-classroom.jpg";
 import first from "@/assets/prayers/fath.jpg";
 import second from "@/assets/prayers/father.jpg";
@@ -99,6 +100,21 @@ import  seventyFirst from "@/assets/enviroment/DSC_0106.jpg";
 import seventySecond from "@/assets/enviroment/DSC_0107.jpg";
 import seventyThird from "@/assets/enviroment/DSC_0108.jpg";  
 import seventyFourth from "@/assets/enviroment/DSC_0109.jpg";
+import g1 from "@/assets/graduation/G3.jpeg";
+import g2 from "@/assets/graduation/G4.jpeg";
+import g3 from "@/assets/graduation/G5.jpeg";
+import g4 from "@/assets/graduation/G7.jpeg";
+import g5 from "@/assets/graduation/G8.jpeg";
+import g6 from "@/assets/graduation/G10.jpeg";
+import g7 from "@/assets/graduation/G11.jpeg";
+
+
+
+
+
+
+
+
 
 
 const categories = ["All", "Our School", "Prayer", "Graduation", "Environment"];
@@ -207,6 +223,20 @@ const images = [
   { src: seventySecond, alt: "Environment", category: "Environment" },
   { src: seventyThird, alt: "Environment", category: "Environment" },
   { src: seventyFourth, alt: "Environment", category: "Environment" },  
+  {src : g1, alt :"Graduation", category: "Graduation"},
+  {src : g2, alt :"Graduation", category: "Graduation"},
+  {src : g3, alt :"Graduation", category: "Graduation"},
+  {src : g4, alt :"Graduation", category: "Graduation"},
+  {src : g5, alt :"Graduation", category: "Graduation"},
+  {src : g6, alt :"Graduation", category: "Graduation"},
+  {src : g7, alt :"Graduation", category: "Graduation"},
+
+
+
+
+
+
+
 
 
 ];
@@ -214,8 +244,23 @@ const images = [
 const Gallery = () => {
   const [active, setActive] = useState("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const filtered = active === "All" ? images : images.filter((img) => img.category === active);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 300); // Short delay for smooth transition
+    return () => clearTimeout(timer);
+  }, [active]);
+
+  const handleCategoryChange = (category: string) => {
+    if (category !== active) {
+      setActive(category);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -235,12 +280,13 @@ const Gallery = () => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActive(cat)}
+                onClick={() => handleCategoryChange(cat)}
+                disabled={loading}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                   active === cat
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-primary/10"
-                }`}
+                } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 {cat}
               </button>
@@ -248,26 +294,43 @@ const Gallery = () => {
           </div>
 
           {/* Masonry Grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 max-w-5xl mx-auto">
-            {filtered.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setLightbox(i)}
-                className="block mb-4 w-full rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow group"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-                <div className="p-3 bg-card">
-                  <p className="text-sm text-muted-foreground">{img.alt}</p>
-                  <span className="text-xs text-primary font-medium">{img.category}</span>
-                </div>
-              </button>
-            ))}
+          <div className={`transition-opacity duration-300 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 max-w-5xl mx-auto">
+              {filtered.map((img, i) => (
+                <button
+                  key={`${active}-${i}`}
+                  onClick={() => setLightbox(i)}
+                  className="block mb-4 w-full rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-300 group"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="p-3 bg-card">
+                    <p className="text-sm text-muted-foreground">{img.alt}</p>
+                    <span className="text-xs text-primary font-medium">{img.category}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Loading Skeleton */}
+          {loading && (
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 max-w-5xl mx-auto">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="block mb-4 w-full rounded-xl overflow-hidden border border-border shadow-sm">
+                  <Skeleton className="w-full h-48" />
+                  <div className="p-3 bg-card">
+                    <Skeleton className="h-4 w-3/4 mb-2" />
+                    <Skeleton className="h-3 w-1/2" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
