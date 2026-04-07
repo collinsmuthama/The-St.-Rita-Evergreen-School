@@ -3,16 +3,16 @@ import { useState } from "react";
 
 const videos = [
   {
-    id: "dQw4w9WgXcQ",
+    id: "oBrurUck4eU",
     title: "Our Journey of Impact",
   },
   {
-    id: "dQw4w9WgXcQ",
+    id: "lZ_8W5fijBk",
     title: "A Day at the School",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Graduation Ceremony 2024",
+    id: "lZ_8W5fijBk",
+    title: "Life at St. Rita Evergreen",
   },
 ];
 
