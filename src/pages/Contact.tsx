@@ -79,7 +79,18 @@ const Contact = () => {
               </div>
             ) : (
               <form
-                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const form = e.target as HTMLFormElement;
+                  const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+                  const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
+                  const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+                  const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+                  const subject = encodeURIComponent("Contact from " + name);
+                  const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`);
+                  window.open(`mailto:thestritaevergreenschools@gmail.com?subject=${subject}&body=${body}`, "_blank");
+                  setSubmitted(true);
+                }}
                 className="space-y-5"
               >
                 <div>

@@ -1,8 +1,24 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero.png";
 import heroImage1 from "@/assets/hero1.png";
-import heroImage2 from "@/assets/hero3.png"
+import heroImage2 from "@/assets/hero3.png";
+
+const highlightKeywords = (text: string) => {
+  const keywords = ["teen mothers", "GBV", "FGM"];
+  const regex = new RegExp(`(${keywords.join("|")})`, "gi");
+  const parts = text.split(regex);
+  return parts.map((part, i) =>
+    keywords.some((k) => k.toLowerCase() === part.toLowerCase()) ? (
+      <Badge key={i} className="text-base sm:text-lg px-3 py-1 mx-1 bg-accent text-accent-foreground font-bold align-middle">
+        {part}
+      </Badge>
+    ) : (
+      part
+    )
+  );
+};
 
 const slides = [
   {
@@ -60,7 +76,7 @@ const HeroSection = () => {
           key={`sub-${current}`}
           className="text-lg sm:text-xl text-primary-foreground/85 mb-10 font-sans leading-relaxed max-w-2xl mx-auto animate-fade-in"
         >
-          {slide.subtitle}
+          {highlightKeywords(slide.subtitle)}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
