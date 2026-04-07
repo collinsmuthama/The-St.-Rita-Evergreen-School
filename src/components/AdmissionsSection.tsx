@@ -23,17 +23,19 @@ const AdmissionsSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Inquiry submitted:", formData);
-    // Reset form
+    const subject = encodeURIComponent("Admission Inquiry from " + formData.name);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
+    );
+    window.open(`mailto:thestritaevergreenschools@gmail.com?subject=${subject}&body=${body}`, "_blank");
     setFormData({ name: "", email: "", phone: "", message: "" });
-    alert("Thank you for your inquiry! We'll get back to you soon.");
   };
 
   const handleDownload = () => {
-    // Placeholder for download functionality
-    // In a real app, this would link to the actual PDF
-    alert("Admission form download would start here. Please check back later for the actual form.");
+    const link = document.createElement("a");
+    link.href = "/St-Rita-School-Boarding-Requirements.pdf";
+    link.download = "St-Rita-School-Boarding-Requirements.pdf";
+    link.click();
   };
 
   return (
