@@ -5,12 +5,12 @@ const testimonials = [
   {
     quote: "This school gave me a second chance at being a mother and a student. I never thought both were possible.",
     name: "Grace M.",
-    year: "Class of 2023",
+    year: "Class of 2025",
   },
   {
     quote: "I arrived broken, but the counselors and teachers helped me believe in myself again. I passed my KCSE with flying colors.",
     name: "Faith W.",
-    year: "Class of 2022",
+    year: "Class of 2025",
   },
   {
     quote: "My baby goes to their daycare while I study. It's a blessing I never expected to find.",
