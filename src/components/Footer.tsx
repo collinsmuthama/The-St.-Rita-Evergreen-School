@@ -6,7 +6,7 @@ const Footer = () => (
       <div className="container mx-auto px-4 grid md:grid-cols-3 gap-10">
         {/* Left */}
         <div>
-          <h3 className="font-display text-xl font-bold mb-4">Esther's School</h3>
+          <h3 className="font-display text-xl font-bold mb-4">The St. Rita Evergreen School</h3>
           <p className="text-sm text-primary-foreground/70 leading-relaxed">
             Empowering teen mothers and survivors of GBV/FGM through quality education, counseling, and community support.
           </p>
@@ -47,12 +47,12 @@ const Footer = () => (
           </form>
           <div className="mt-6 text-sm text-primary-foreground/70">
             <p className="font-semibold text-primary-foreground">Emergency Contact</p>
-            <p>+254 700 000 000</p>
+            <p> +254 721 101 249/+254 731 521 306</p>
           </div>
         </div>
       </div>
       <div className="container mx-auto px-4 mt-12 pt-6 border-t border-primary-foreground/10 text-center text-xs text-primary-foreground/40">
-        © {new Date().getFullYear()} Esther's School. All rights reserved.
+        © {new Date().getFullYear()} The St. Rita Evergreen School. All rights reserved.
       </div>
     </footer>
 

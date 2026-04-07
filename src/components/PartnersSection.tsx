@@ -1,20 +1,11 @@
+import GDP from "@/assets/GDP.jpeg";
+
 const partners = [
   {
-    name: "Local NGO Support",
-    logo: "/placeholder-logo1.png", // Placeholder - replace with actual logo
+    name: "GDP Kenya",
+    logo: GDP, // Placeholder - replace with actual logo
   },
-  {
-    name: "TechCorp Kenya",
-    logo: "/placeholder-logo2.png", // Placeholder - replace with actual logo
-  },
-  {
-    name: "Education Foundation",
-    logo: "/placeholder-logo3.png", // Placeholder - replace with actual logo
-  },
-  {
-    name: "Community Partners",
-    logo: "/placeholder-logo4.png", // Placeholder - replace with actual logo
-  },
+ 
 ];
 
 const PartnersSection = () => (
@@ -29,10 +20,10 @@ const PartnersSection = () => (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
         {partners.map((partner, index) => (
           <div key={index} className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-secondary rounded-lg flex items-center justify-center mb-4">
+            <div className="w-30 h-30 bg-secondary rounded-lg flex items-center justify-center mb-4">
               {/* Placeholder for logo */}
               <span className="text-2xl font-bold text-muted-foreground">
-                {partner.name.charAt(0)}
+                <img src={partner.logo} alt={partner.name.charAt(0)} />
               </span>
             </div>
             <h3 className="font-semibold text-foreground">{partner.name}</h3>

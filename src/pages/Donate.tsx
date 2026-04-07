@@ -9,29 +9,38 @@ const presetAmounts = [500, 1000, 2000, 5000, 10000, 25000];
 
 const methods = [
   {
+    icon: Smartphone,
+    title: "M-Pesa Paybill",
+    details: [
+      { label: "Paybill Number", value: "0404022" },
+      { label: "Amount", value: "Any amount" },
+    ],
+    accent: false,
+  },
+  {
     icon: Building2,
     title: "Bank Transfer",
     details: [
       { label: "Bank", value: "Equity Bank" },
-      { label: "Account", value: "0123456789" },
-      { label: "Branch", value: "Narok" },
-      { label: "SWIFT", value: "EABORKE1XXX" },
+      { label: "Account", value: "0110354647778" },
     ],
     accent: false,
   },
   {
     icon: Globe,
     title: "GoFundMe",
-    details: [{ label: "Link", value: "gofundme.com/esthers-school" }],
     accent: false,
     link: "https://gofundme.com/esthers-school",
+    details: [
+      {label : "GoFund", value:"GoFund"}
+    ]
   },
   {
     icon: Package,
     title: "In-Kind Donations",
     details: [
       { label: "Items Needed", value: "Mattresses, hygiene kits, bedding, uniforms, books" },
-      { label: "Drop-off", value: "Esther's School, Narok County" },
+      { label: "Drop-off", value: "The st. rita evergreen School, Nyeri County" },
     ],
     accent: false,
   },
@@ -41,7 +50,6 @@ const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [phone, setPhone] = useState("");
-  const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -87,8 +95,8 @@ const Donate = () => {
 
             {submitted ? (
               <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Smartphone className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <Smartphone className="w-8 h-8 text-accent" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-foreground mb-2">STK Push Sent!</h3>
                 <p className="text-muted-foreground text-sm">Check your phone and enter your M-Pesa PIN to complete the donation of <strong>KES {finalAmount.toLocaleString()}</strong>.</p>
@@ -125,6 +133,7 @@ const Donate = () => {
                     placeholder="e.g. 3000"
                     value={customAmount}
                     onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(null); }}
+                    className="border-accent focus:border-accent"
                   />
                 </div>
 
@@ -138,18 +147,7 @@ const Donate = () => {
                     onChange={(e) => setPhone(e.target.value)}
                     required
                     maxLength={13}
-                  />
-                </div>
-
-                {/* Name */}
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">Your Name (optional)</label>
-                  <Input
-                    type="text"
-                    placeholder="e.g. Jane Wanjiku"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    maxLength={100}
+                    className="border-accent focus:border-accent"
                   />
                 </div>
 
@@ -176,12 +174,12 @@ const Donate = () => {
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="font-display text-3xl font-bold text-foreground mb-12 text-center">Other Payment Methods</h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {methods.map((m) => (
-              <div key={m.title} className="rounded-xl p-6 border border-border bg-card shadow-sm">
+              <div key={m.title} className={`rounded-xl p-6 border border-border shadow-sm ${m.accent ? 'bg-accent/5 border-accent' : 'bg-card'}`}>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-primary/10">
-                    <m.icon className="w-5 h-5 text-primary" />
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${m.accent ? 'bg-accent/10' : 'bg-primary/10'}`}>
+                    <m.icon className={`w-5 h-5 ${m.accent ? 'text-accent' : 'text-primary'}`} />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-foreground">{m.title}</h3>
                 </div>

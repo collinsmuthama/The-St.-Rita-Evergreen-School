@@ -9,6 +9,7 @@ import Contact from "./pages/Contact.tsx";
 import Donate from "./pages/Donate.tsx";
 import Gallery from "./pages/Gallery.tsx";
 import Admissions from "./pages/Admissions.tsx";
+import Staff from "./pages/Staff.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/staff" element={<Staff />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/gallery" element={<Gallery />} />

@@ -30,7 +30,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Location</p>
-                <p className="text-muted-foreground text-sm">Esther's School, Nyahururu, Kenya — 13 km from Nyahururu town along the Nyahururu–Nyeri road</p>
+                <p className="text-muted-foreground text-sm">The St. Rita Evergreen School, Nyahururu, Kenya — 13 km from Nyahururu town along the Nyahururu–Nyeri road</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
@@ -39,7 +39,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Phone</p>
-                <p className="text-muted-foreground text-sm">+254 700 000 000</p>
+                <p className="text-muted-foreground text-sm">+254 721 101 249/+254 731 521 306</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
@@ -48,7 +48,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Email</p>
-                <p className="text-muted-foreground text-sm">info@esthersschool.org</p>
+                <p className="text-muted-foreground text-sm">thestritaevergreenschools@gmail.com</p>
               </div>
             </div>
 
