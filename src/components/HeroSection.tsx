@@ -76,7 +76,7 @@ const HeroSection = () => {
           key={`sub-${current}`}
           className="text-lg sm:text-xl text-primary-foreground/85 mb-10 font-sans leading-relaxed max-w-2xl mx-auto animate-fade-in"
         >
-          {slide.subtitle}
+          {highlightKeywords(slide.subtitle)}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
