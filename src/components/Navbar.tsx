@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "@/assets/school-logo.png";
+import Logo1 from "@/assets/logo1.png";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -52,7 +53,16 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={Logo} alt="St. Rita Evergreen School Logo" className="w-10 h-10 object-contain" />
+         <img 
+            src={Logo1} 
+            alt="Logo"
+            className={`w-14 h-14 object-contain transition-all ${
+              scrolled || !isHome 
+                ? "" 
+                : "drop-shadow-[0_0_6px_rgba(45,139,86,0.8)]"
+            }`}
+          />
+
           <span className={`font-display text-xl sm:text-2xl font-bold transition-colors ${scrolled || !isHome ? "text-foreground" : "text-primary-foreground"}`}>
             St. Rita Evergreen
           </span>

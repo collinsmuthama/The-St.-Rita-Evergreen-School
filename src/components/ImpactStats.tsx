@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { GraduationCap, Baby, Heart, MapPin } from "lucide-react";
 
 const stats = [
-  { icon: GraduationCap, value: 150, suffix: "+", label: "Girls Reintegrated into Education" },
+  { icon: GraduationCap, value: 200, suffix: "+", label: "Girls Reintegrated into Education" },
   { icon: Baby, value: 45, suffix: "", label: "Healthy Babies in Our Daycare" },
   { icon: Heart, value: 100, suffix: "%", label: "Access to Trauma Counseling" },
   { icon: MapPin, value: 12, suffix: "", label: "Counties Reached through Advocacy" },
