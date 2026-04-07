@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "@/assets/logo.png";
+import Logo from "@/assets/school-logo.png";
 
 const navItems = [
   { label: "Home", href: "/" },
