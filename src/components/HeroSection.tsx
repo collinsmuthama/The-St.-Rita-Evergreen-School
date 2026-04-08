@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero.png";
 import heroImage1 from "@/assets/hero1.png";
 import heroImage2 from "@/assets/hero3.png";
+import { Link, useLocation } from "react-router-dom";
+
 
 const highlightKeywords = (text: string) => {
   const keywords = ["teen mothers", "GBV", "FGM"];
@@ -79,12 +81,12 @@ const HeroSection = () => {
           {highlightKeywords(slide.subtitle)}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#admissions"
+          <Link
+            to="/admissions"
             className="px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity text-base"
           >
             Apply for Admission
-          </a>
+          </Link>
           <a
             href="#involved"
             className="px-8 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity text-base"
